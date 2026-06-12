@@ -8,6 +8,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
@@ -18,7 +19,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class StepDefinitions {
 
-    private final WebDriver driver = new FirefoxDriver(); //Switched to ChromeDriver because for whatever reason firefox wasn't finding elements
+    FirefoxOptions options = new FirefoxOptions().setPageLoadStrategy(PageLoadStrategy.EAGER); //fix for page loading
+    private final WebDriver driver = new FirefoxDriver(options);
 
     @Given("I am on the Makers FAQ page")
     public void I_visit_faq_page() {
